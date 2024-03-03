@@ -10,7 +10,7 @@ from .serializers import CourseSerializer, LessonSerializer
 class CourseViewSet(ListModelMixin, GenericViewSet):
     """Вывод списка продуктов(курсов.)"""
 
-    queryset = Course.objects.all()
+    queryset = Course.objects.prefetch_related('lessons', 'group_set', 'student', 'enrollment_set')
     serializer_class = CourseSerializer
 
 
